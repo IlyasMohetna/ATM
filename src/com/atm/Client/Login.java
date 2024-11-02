@@ -1,4 +1,4 @@
-package com.atm.Client.Menu;
+package com.atm.Client;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,17 +8,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Menu extends Application {
+public class Login extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            // Load the FXML file
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Client/Menu.fxml"));
-            
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Client/Login.fxml"));
             Scene scene = new Scene(root);
-
-            primaryStage.setTitle("Menu");
+            primaryStage.setTitle("Accédez à votre espace bancaire");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {

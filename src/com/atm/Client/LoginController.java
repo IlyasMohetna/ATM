@@ -1,4 +1,4 @@
-package com.atm.Client.Login;
+package com.atm.Client;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,6 @@ import org.json.JSONObject;
 
 import com.atm.Admin.DashboardController;
 import com.atm.Client.OOP.BankAccount;
-import com.atm.Client.Menu.MenuController;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -47,7 +46,6 @@ public class LoginController {
             BankAccount account = BankAccount.authenticate(accountNumber, pin);
 
             if (account != null) {
-                // Load Dashboard.fxml directly
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Menu.fxml"));
                 Parent loginRoot = loader.load();
 
@@ -57,7 +55,6 @@ public class LoginController {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(new Scene(loginRoot));
                 stage.setTitle("Dashboard");
-    
             } else {
                 System.out.println("Invalid account number or PIN.");
                 showAlert("Error", "Invalid account number or PIN.");

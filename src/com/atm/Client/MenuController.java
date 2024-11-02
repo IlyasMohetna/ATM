@@ -1,4 +1,4 @@
-package com.atm.Client.Menu;
+package com.atm.Client;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,20 +33,30 @@ public class MenuController {
 
     @FXML
     public void initialize() {
-        actionButton1.setOnAction(event -> handleDepot());
+        actionButton1.setOnAction(event -> handleDeposit());
         actionButton3.setOnAction(event -> handleLogout());
-    }
-
-    public MenuController() {
-
     }
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
     }
 
-    private void handleDepot() {
-        System.out.println("Solde");
+    private void handleDeposit() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Deposit.fxml"));
+            Parent loginRoot = loader.load();
+
+            DepositController depositController = loader.getController();
+            depositController.setBankAccount(bankAccount);
+
+            Stage stage = (Stage) actionButton3.getScene().getWindow();
+
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void handleLogout() {

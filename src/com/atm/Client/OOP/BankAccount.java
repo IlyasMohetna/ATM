@@ -101,13 +101,14 @@ public class BankAccount {
     }
 
     
-    public void deposit(double amount) throws IOException {
+    public boolean deposit(double amount) throws IOException {
         if (amount > 0) {
             balance += amount;
             transactions.add(new Transaction("deposit", amount, new Date()));
-            updateAccountInJson(); // Update JSON file
+            updateAccountInJson();
+            return true;
         } else {
-            System.out.println("Invalid deposit amount");
+            return false;
         }
     }
 
@@ -115,7 +116,7 @@ public class BankAccount {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
             transactions.add(new Transaction("withdrawal", amount, new Date()));
-            updateAccountInJson(); // Update JSON file
+            updateAccountInJson();
             return true;
         } else {
             System.out.println("Invalid withdrawal amount or insufficient balance");
