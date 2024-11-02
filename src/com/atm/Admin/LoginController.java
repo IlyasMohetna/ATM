@@ -32,7 +32,6 @@ public class LoginController {
 
     private String fullname;
     private String avatar;
-    private Map<String, String> userCredentials = new HashMap<>();
 
     @FXML
     public void initialize() {
