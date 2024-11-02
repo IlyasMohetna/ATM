@@ -3,13 +3,15 @@
   "java.project.outputPath": "bin",
   "java.jdt.ls.vmargs": "--module-path \"C:/javafx-sdk-23.0.1/lib\" --add-modules javafx.controls,javafx.fxml",
   "java.project.referencedLibraries": [
-    "c:\\javafx-sdk-23.0.1\\lib\\javafx.base.jar",
-    "c:\\javafx-sdk-23.0.1\\lib\\javafx.controls.jar",
+    "c:\\Users\\Ilyas Mohetna\\Downloads\\json-20240303.jar",
     "c:\\javafx-sdk-23.0.1\\lib\\javafx.fxml.jar",
     "c:\\javafx-sdk-23.0.1\\lib\\javafx.graphics.jar",
-    "c:\\javafx-sdk-23.0.1\\lib\\javafx.media.jar",
+    "c:\\javafx-sdk-23.0.1\\lib\\javafx.controls.jar",
+    "c:\\javafx-sdk-23.0.1\\lib\\javafx-swt.jar",
+    "c:\\javafx-sdk-23.0.1\\lib\\javafx.base.jar",
     "c:\\javafx-sdk-23.0.1\\lib\\javafx.swing.jar",
-    "c:\\javafx-sdk-23.0.1\\lib\\javafx.web.jar",
-    "c:\\javafx-sdk-23.0.1\\lib\\javafx-swt.jar"
+    "c:\\Users\\Ilyas Mohetna\\Downloads\\fontawesomefx-8.1.jar",
+    "c:\\javafx-sdk-23.0.1\\lib\\javafx.media.jar",
+    "c:\\javafx-sdk-23.0.1\\lib\\javafx.web.jar"
   ]
 }
