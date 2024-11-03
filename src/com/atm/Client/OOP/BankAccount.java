@@ -21,7 +21,7 @@ public class BankAccount {
     private double balance;
     private List<Transaction> transactions;
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.FRENCH);
-    private static final String DATA_PATH = "src/data/user.json";
+    public static final String DATA_PATH = "src/data/user.json";
 
     // Constructor to initialize BankAccount from JSON data
     public BankAccount(String accountNumber, String pin, String firstname, String lastname, double balance) {

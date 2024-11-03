@@ -2,6 +2,10 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -14,8 +18,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:controller="com.atm.Admin.DashboardController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atm.Admin.DashboardController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="260.0" style="-fx-background-color: #EBE8F5;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,6 +28,9 @@
                 <VBox.margin>
                     <Insets bottom="10.0" top="50.0" />
                 </VBox.margin>
+               <image>
+                  <Image url="@../../images/avatar/jimmy-fallon.png" />
+               </image>
             </ImageView>
             <Label fx:id="fullnameLabel" text="Jimmy Fallon">
                <VBox.margin>
@@ -102,12 +110,12 @@
             </Button>
          </children>
       </VBox>
-      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="257.9999999999999" AnchorPane.rightAnchor="-1.6000000000000227" AnchorPane.topAnchor="0.0">
          <children>
             <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" style="-fx-background-color: #ffffff;">
+            <Pane fx:id="pnlOverview" prefHeight="604.0" prefWidth="794.0" style="-fx-background-color: #ffffff;">
                <children>
                   <TextField layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="Recherche" style="-fx-background-color: #ccc; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
                      <font>
@@ -118,46 +126,70 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="72.0" prefHeight="92.0" prefWidth="661.0" spacing="50.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="72.0" prefHeight="92.0" prefWidth="726.0" spacing="50.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="22000" textFill="#2a73ff">
+                              <Text fx:id="usersCountText" fill="#2a73ff" strokeType="OUTSIDE" strokeWidth="0.0" text="\${user}" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
-                              </Label>
-                              <Label text="Total Orders" />
+                              </Text>
+                              <Label text="Utilisateurs">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin></Label>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="166.0">
                            <children>
-                              <Label text="1500" textFill="#26bfbc">
+                              <Text fx:id="depositCountText" fill="#26bfbc" strokeType="OUTSIDE" strokeWidth="0.0" text="\${deposit}" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
-                              </Label>
-                              <Label text="Total delivered" />
+                              </Text>
+                              <Label prefHeight="21.0" prefWidth="146.0" text="Opérations de dépôt">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="161.0">
                            <children>
-                              <Label text="1000" textFill="#fa5f7e">
+                              <Text fx:id="withdrawCountText" fill="#fa5f7e" strokeType="OUTSIDE" strokeWidth="0.0" text="\${withdraw}" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
-                              </Label>
-                              <Label text="Peding Orders" />
+                              </Text>
+                              <Label text="Opérations de retrait">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="104.0">
                            <children>
-                              <Label text="780" textFill="#de0000">
+                              <Text fx:id="totalBalanceText" fill="#54dd56" strokeType="OUTSIDE" strokeWidth="0.0" text="\${balance}" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="26.0" />
                                  </font>
-                              </Label>
-                              <Label text="Orders on Hold" />
+                              </Text>
+                              <Label text="Solde total">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Label>
                            </children>
                         </VBox>
                      </children>
@@ -167,6 +199,15 @@
                         <Image url="@../../images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
+                  <ScatterChart layoutX="45.0" layoutY="199.0" prefHeight="344.0" prefWidth="444.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </ScatterChart>
+                  <PieChart layoutX="517.0" layoutY="244.0" prefHeight="270.0" prefWidth="250.0" />
                </children>
             </Pane>
          </children>
