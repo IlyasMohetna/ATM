@@ -1,19 +1,21 @@
-[{
+[
+  {
     "account_number": "123456789",
     "firstname": "John",
     "pin": "1111",
     "balance": 7550,
     "transactions": [
-        {
-            "date": "2024-11-02 21:56:00",
-            "amount": 100,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-02 23:50:09",
-            "amount": 1000,
-            "type": "deposit"
-        }
+      {
+        "date": "2024-11-02 21:56:00",
+        "amount": 100,
+        "type": "deposit"
+      },
+      {
+        "date": "2024-11-02 23:50:09",
+        "amount": 1000,
+        "type": "deposit"
+      }
     ],
     "lastname": "Doe"
-}]
+  }
+]

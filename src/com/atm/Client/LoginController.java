@@ -10,17 +10,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.atm.Admin.DashboardController;
 import com.atm.Client.OOP.BankAccount;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginController {
 
