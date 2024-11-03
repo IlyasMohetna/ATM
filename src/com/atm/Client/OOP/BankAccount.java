@@ -55,6 +55,30 @@ public class BankAccount {
         return balance;
     }
 
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+    
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+    
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+    
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+    
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+    
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+    
     public List<Transaction> getTransactions() {
         return transactions;
     }
@@ -99,8 +123,7 @@ public class BankAccount {
         // Return null if no matching account found
         return null;
     }
-
-    
+  
     public boolean deposit(double amount) throws IOException {
         if (amount > 0) {
             balance += amount;
@@ -126,6 +149,36 @@ public class BankAccount {
 
     public double checkBalance() {
         return balance;
+    }
+
+    public String changePin(String actualPin, String newPin, String confirmNewPin) throws IOException {
+        if (!this.pin.equals(actualPin)) {
+            return "Le PIN actuel est incorrect.";
+        }
+        if (!newPin.equals(confirmNewPin)) {
+            return "Le nouveau PIN et la confirmation ne correspondent pas.";
+        }
+
+        this.pin = newPin;
+        updatePinInJson();
+        return "Votre PIN a été mis à jour avec succès.";
+    }
+
+    private void updatePinInJson() throws IOException {
+        String content = new String(Files.readAllBytes(Paths.get(DATA_PATH)));
+        JSONArray users = new JSONArray(content);
+
+        // Find the user by account number and update the PIN
+        for (int i = 0; i < users.length(); i++) {
+            JSONObject user = users.getJSONObject(i);
+            if (user.getString("account_number").equals(this.accountNumber)) {
+                user.put("pin", this.pin);
+                break;
+            }
+        }
+
+        // Write the updated JSON back to the file
+        Files.write(Paths.get(DATA_PATH), users.toString(4).getBytes());
     }
 
     private void updateAccountInJson() throws IOException {

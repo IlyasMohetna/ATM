@@ -35,6 +35,7 @@ public class MenuController {
     @FXML
     public void initialize() {
         actionButton1.setOnAction(event -> handleDeposit());
+        actionButton2.setOnAction(event -> handleChangePin());
         actionButton3.setOnAction(event -> handleLogout());
         actionButton7.setOnAction(event -> handleBalance());
     }
@@ -50,6 +51,24 @@ public class MenuController {
 
             DepositController depositController = loader.getController();
             depositController.setBankAccount(bankAccount);
+
+            Stage stage = (Stage) actionButton3.getScene().getWindow();
+
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleChangePin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/ChangePin.fxml"));
+            Parent loginRoot = loader.load();
+
+            ChangePinController changePinController = loader.getController();
+            changePinController.setBankAccount(bankAccount);
 
             Stage stage = (Stage) actionButton3.getScene().getWindow();
 
