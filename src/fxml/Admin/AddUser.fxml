@@ -159,7 +159,7 @@
                         <Label layoutX="15.0" layoutY="221.0" prefHeight="17.0" prefWidth="67.0" text="Pin :" />
                         <TextField fx:id="balanceField" layoutX="15.0" layoutY="306.0" prefHeight="32.0" prefWidth="381.0" promptText="Saisissez la balance initiale du compte" />
                         <Label layoutX="15.0" layoutY="285.0" prefHeight="17.0" prefWidth="97.0" text="Balance initiale :" />
-                        <Button layoutX="136.0" layoutY="358.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="138.0" style="-fx-background-color: #f8b73c;" text="Ajouter +" textFill="WHITE">
+                        <Button fx:id="addButton" layoutX="136.0" layoutY="358.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="138.0" style="-fx-background-color: #f8b73c;" text="Ajouter +" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -167,7 +167,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="335.0" layoutY="246.0" mnemonicParsing="false" text="Générer">
+                        <Button fx:id="generatePinButton" layoutX="335.0" layoutY="246.0" mnemonicParsing="false" text="Générer">
                            <font>
                               <Font size="11.0" />
                            </font>

@@ -137,7 +137,7 @@ public class BankAccount {
             return "Montant du dépôt invalide. Le montant doit être supérieur à 0.";
         }
         balance += amount;
-        transactions.add(new Transaction("dépôt", amount, new Date()));
+        transactions.add(new Transaction("deposit", amount, new Date()));
         updateAccountInJson();
         return "Dépôt réussi";
     }
@@ -211,4 +211,66 @@ public class BankAccount {
         // Write updated JSON back to file
         Files.write(Paths.get(DATA_PATH), users.toString(4).getBytes());
     }
+
+    public static String createAccount(String accountNumber, String pin, String firstname, String lastname, double balance) throws IOException {
+        // Validate inputs
+        if (accountNumber == null || accountNumber.isEmpty() || pin == null || pin.length() != 4) {
+            return "Numéro de compte ou PIN invalide.";
+        }
+        if (firstname == null || firstname.isEmpty() || lastname == null || lastname.isEmpty()) {
+            return "Le prénom et le nom sont requis.";
+        }
+        if (balance < 0) {
+            return "La balance initiale doit être positive.";
+        }
+
+        // Check if account number is unique
+        if (isAccountNumberExists(accountNumber)) {
+            return "Le numéro de compte existe déjà. Veuillez en choisir un autre.";
+        }
+
+        // Create the new account
+        BankAccount newAccount = new BankAccount(accountNumber, pin, firstname, lastname, balance);
+        newAccount.creation_date = new Date();
+
+        // Save to JSON
+        addAccountToJson(newAccount);
+
+        return "Compte créé avec succès.";
+    }
+
+    private static boolean isAccountNumberExists(String accountNumber) throws IOException {
+        String content = new String(Files.readAllBytes(Paths.get(DATA_PATH)));
+        JSONArray users = new JSONArray(content);
+
+        for (int i = 0; i < users.length(); i++) {
+            JSONObject user = users.getJSONObject(i);
+            if (user.getString("account_number").equals(accountNumber)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void addAccountToJson(BankAccount account) throws IOException {
+        String content = new String(Files.readAllBytes(Paths.get(DATA_PATH)));
+        JSONArray users = new JSONArray(content);
+
+        JSONObject newUser = new JSONObject();
+        newUser.put("account_number", account.getAccountNumber());
+        newUser.put("pin", account.getPin());
+        newUser.put("firstname", account.getFirstname());
+        newUser.put("lastname", account.getLastname());
+        newUser.put("balance", account.getBalance());
+        newUser.put("creation_date", DATE_FORMAT.format(account.getCreationDate()));
+
+        // Adding transactions as an empty array for a new account
+        newUser.put("transactions", new JSONArray());
+
+        users.put(newUser);
+
+        // Write updated JSON back to file
+        Files.write(Paths.get(DATA_PATH), users.toString(4).getBytes());
+    }
+
 }

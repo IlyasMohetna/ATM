@@ -5,9 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Paths;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import com.atm.Client.OOP.BankAccount;
 
@@ -37,17 +42,58 @@ public class MenuController {
     @FXML
     private Button actionButton8;
 
+    private MediaPlayer buttonSoundPlayer;
+
     private BankAccount bankAccount;
 
     @FXML
     public void initialize() {
-        actionButton1.setOnAction(event -> handleDeposit());
-        actionButton2.setOnAction(event -> handleChangePin());
-        actionButton3.setOnAction(event -> handleLogout());
-        actionButton5.setOnAction(event -> handleWithdraw());
-        actionButton6.setOnAction(event -> handleStatement());
-        actionButton7.setOnAction(event -> handleBalance());
+        preloadAudio();
+
+        actionButton1.setOnAction(event -> {
+            playButtonSound();
+            handleDeposit();
+        });
+        actionButton2.setOnAction(event -> {
+            playButtonSound();
+            handleChangePin();
+        });
+        actionButton3.setOnAction(event -> {
+            playButtonSound();
+            handleLogout();
+        });
+        actionButton5.setOnAction(event -> {
+            playButtonSound();
+            handleWithdraw();
+        });
+        actionButton6.setOnAction(event -> {
+            playButtonSound();
+            handleStatement();
+        });
+        actionButton7.setOnAction(event -> {
+            playButtonSound();
+            handleBalance();
+        });
     }
+
+    
+    private void playButtonSound() {
+        buttonSoundPlayer.seek(javafx.util.Duration.ZERO); // Reset playback to start
+        buttonSoundPlayer.play();
+    }
+
+    private void preloadAudio() {
+        Media sound = new Media(getClass().getResource("/audio/atm_button_sound.mp3").toExternalForm());
+        buttonSoundPlayer = new MediaPlayer(sound);
+        
+        buttonSoundPlayer.setVolume(0);
+        buttonSoundPlayer.play();
+        
+        // Set volume back to normal after initialization
+        buttonSoundPlayer.setOnEndOfMedia(() -> buttonSoundPlayer.setVolume(1.0));
+    }
+    
+    
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
