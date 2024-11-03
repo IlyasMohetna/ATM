@@ -19,6 +19,7 @@ public class BankAccount {
     private String firstname;
     private String lastname;
     private double balance;
+    private Date creation_date;
     private List<Transaction> transactions;
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.FRENCH);
     public static final String DATA_PATH = "src/data/user.json";
@@ -54,6 +55,10 @@ public class BankAccount {
         return balance;
     }
 
+    public Date getCreationDate() {
+        return creation_date;
+    }
+
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
@@ -78,6 +83,10 @@ public class BankAccount {
         this.transactions = transactions;
     }
     
+    public void setCreationDate(Date creation_date) {
+        this.creation_date = creation_date;
+    }
+
     public List<Transaction> getTransactions() {
         return transactions;
     }

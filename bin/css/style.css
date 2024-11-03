@@ -7,3 +7,11 @@
   -fx-background-radius: 10 0 0 10;
   -fx-background-color: #2b2c3e;
 }
+
+.sideBarMenuButton {
+  -fx-background-color: #ebe8f9;
+}
+
+.sideBarMenuButton:hover {
+  -fx-background-color: #dcd8ecc8;
+}
