@@ -23,10 +23,11 @@ public class MenuController {
     private Button actionButton3;
 
     @FXML
+    private Button actionButton7;
+
     private Button actionButton4;
     private Button actionButton5;
     private Button actionButton6;
-    private Button actionButton7;
     private Button actionButton8;
 
     private BankAccount bankAccount;
@@ -35,6 +36,7 @@ public class MenuController {
     public void initialize() {
         actionButton1.setOnAction(event -> handleDeposit());
         actionButton3.setOnAction(event -> handleLogout());
+        actionButton7.setOnAction(event -> handleBalance());
     }
 
     public void setBankAccount(BankAccount bankAccount) {
@@ -63,6 +65,24 @@ public class MenuController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Login.fxml"));
             Parent loginRoot = loader.load();
+
+            Stage stage = (Stage) actionButton3.getScene().getWindow();
+
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleBalance() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Balance.fxml"));
+            Parent loginRoot = loader.load();
+
+            BalanceController balanceController = loader.getController();
+            balanceController.setBankAccount(bankAccount);
 
             Stage stage = (Stage) actionButton3.getScene().getWindow();
 

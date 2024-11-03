@@ -2,7 +2,7 @@
     "account_number": "123456789",
     "firstname": "John",
     "pin": "1234",
-    "balance": 6550,
+    "balance": 7550,
     "transactions": [
         {
             "date": "2024-11-02 21:56:00",
@@ -10,33 +10,8 @@
             "type": "deposit"
         },
         {
-            "date": "2024-11-02 23:26:47",
-            "amount": 200,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-02 23:27:01",
-            "amount": 200,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-02 23:27:05",
-            "amount": 200,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-02 23:27:59",
-            "amount": 200,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-02 23:30:18",
-            "amount": 200,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-02 23:30:51",
-            "amount": 350,
+            "date": "2024-11-02 23:50:09",
+            "amount": 1000,
             "type": "deposit"
         }
     ],
