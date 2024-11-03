@@ -36,14 +36,14 @@ public class AddUserController {
     private Button btnSignout;
 
     @FXML
-    private Button generatePinButton; // Button to generate a new random PIN
+    private Button generatePinButton;
 
     @FXML
     public void initialize() {
         btnSignout.setOnAction(event -> handleLogout());
         addButton.setOnAction(event -> handleAddAccount());
-        generatePinButton.setOnAction(event -> generateNewPin()); // Set action for the generatePinButton
-        generateAccountNumberAndPin(); // Initial generation for account number and PIN
+        generatePinButton.setOnAction(event -> generateNewPin());
+        generateAccountNumberAndPin();
     }
 
     private void handleLogout() {

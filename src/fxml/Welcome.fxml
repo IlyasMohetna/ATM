@@ -45,7 +45,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.atm.WelcomeController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <AnchorPane prefHeight="700.0" prefWidth="650.0" style="-fx-background-color: #087ec5;" BorderPane.alignment="CENTER">
          <children>
@@ -196,7 +196,7 @@
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="-16.0" layoutY="-3.0" mnemonicParsing="false" prefHeight="212.0" prefWidth="330.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="clientOptionButton" layoutX="-16.0" layoutY="-3.0" mnemonicParsing="false" prefHeight="212.0" prefWidth="330.0" style="-fx-background-color: transparent;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -211,7 +211,7 @@
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="-15.0" layoutY="5.0" mnemonicParsing="false" prefHeight="212.0" prefWidth="330.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="adminOptionButton" layoutX="-15.0" layoutY="5.0" mnemonicParsing="false" prefHeight="212.0" prefWidth="330.0" style="-fx-background-color: transparent;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

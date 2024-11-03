@@ -180,7 +180,6 @@ public class MenuController {
             statementStage.setScene(new Scene(statementRoot));
             statementStage.setTitle("Statement");
             
-            // Show the new window
             statementStage.show();
 
         } catch (IOException e) {
