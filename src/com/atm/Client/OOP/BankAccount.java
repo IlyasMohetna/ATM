@@ -134,16 +134,18 @@ public class BankAccount {
         }
     }
 
-    public boolean withdraw(double amount) throws IOException {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            transactions.add(new Transaction("withdrawal", amount, new Date()));
-            updateAccountInJson();
-            return true;
-        } else {
-            System.out.println("Invalid withdrawal amount or insufficient balance");
-            return false;
+    public String withdraw(double amount) throws IOException {
+        if (amount <= 0) {
+            return "Montant de retrait invalide.";
         }
+        if (amount > balance) {
+            return "Solde insuffisant pour effectuer le retrait.";
+        }
+        
+        balance -= amount;
+        transactions.add(new Transaction("retrait", amount, new Date()));
+        updateAccountInJson();
+        return "Retrait effectué avec succès.";
     }
 
     public double checkBalance() {

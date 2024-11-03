@@ -25,9 +25,16 @@ public class MenuController {
     @FXML
     private Button actionButton7;
 
+    @FXML
     private Button actionButton4;
+
+    @FXML
     private Button actionButton5;
+
+    @FXML
     private Button actionButton6;
+
+    @FXML
     private Button actionButton8;
 
     private BankAccount bankAccount;
@@ -37,6 +44,7 @@ public class MenuController {
         actionButton1.setOnAction(event -> handleDeposit());
         actionButton2.setOnAction(event -> handleChangePin());
         actionButton3.setOnAction(event -> handleLogout());
+        actionButton5.setOnAction(event -> handleWithdraw());
         actionButton7.setOnAction(event -> handleBalance());
     }
 
@@ -84,6 +92,24 @@ public class MenuController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Login.fxml"));
             Parent loginRoot = loader.load();
+
+            Stage stage = (Stage) actionButton3.getScene().getWindow();
+
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleWithdraw() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Withdraw.fxml"));
+            Parent loginRoot = loader.load();
+
+            WithdrawController withdrawController = loader.getController();
+            withdrawController.setBankAccount(bankAccount);
 
             Stage stage = (Stage) actionButton3.getScene().getWindow();
 
