@@ -58,6 +58,7 @@ public class DashboardController {
     public void initialize() {
         usersButton.setOnAction(event -> handleUsers());
         btnSignout.setOnAction(event -> handleLogout());
+        addUserButton.setOnAction(event -> handleAddUser());
         loadAnalytics();
         setupBarChart(); // Update this to setupBarChart
     }
@@ -97,6 +98,20 @@ public class DashboardController {
     private void handleUsers() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Admin/Users.fxml"));
+            Parent usersRoot = loader.load();
+
+            Stage stage = (Stage) usersButton.getScene().getWindow();
+            stage.setScene(new Scene(usersRoot));
+            stage.setTitle("Utilisateurs");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleAddUser() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Admin/AddUser.fxml"));
             Parent usersRoot = loader.load();
 
             Stage stage = (Stage) usersButton.getScene().getWindow();
