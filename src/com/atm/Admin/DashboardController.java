@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
 
 import java.io.IOException;
 
@@ -91,8 +92,9 @@ public class DashboardController {
         withdrawSeries.setName("Retraits");
         withdrawSeries.getData().add(new XYChart.Data<>("Retraits", analytics.getWithdrawCount()));
 
-        // Add data series to the bar chart
-        barChart.getData().addAll(depositSeries, withdrawSeries);
+        barChart.setData(FXCollections.observableArrayList());
+        barChart.getData().add(depositSeries);
+        barChart.getData().add(withdrawSeries);
     }
 
     private void handleUsers() {

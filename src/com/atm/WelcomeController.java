@@ -10,8 +10,6 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-import com.atm.Client.StatementController;
-
 public class WelcomeController extends Application {
 
     @FXML
