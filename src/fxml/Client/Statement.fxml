@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="420.0" style="-fx-border-color: #ffffff; -fx-background-color: #ccc;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atm.Client.StatementController">
+   <children>
+      <ImageView fitHeight="57.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/logo-utbm-blue.png" />
+         </image>
+         <VBox.margin>
+            <Insets left="20.0" top="20.0" />
+         </VBox.margin>
+      </ImageView>
+      <Pane prefHeight="34.0" prefWidth="384.0">
+         <children>
+            <Label layoutX="119.0" layoutY="7.0" text="Votre relevé bancaire" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane prefHeight="58.0" prefWidth="418.0">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <children>
+            <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro de compte : " wrappingWidth="125.95002365112305">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulaire du compte : ">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="accountNumberText" layoutX="133.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\${account_number}" wrappingWidth="180.17578125">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="accountHolderText" layoutX="133.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\${account_holder}" wrappingWidth="180.17578125">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="35.0" prefWidth="418.0">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <children>
+            <Text layoutX="14.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="49.950008392333984">
+               <font>
+                  <Font name="Bookshelf Symbol 7" size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="158.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type d'opération" wrappingWidth="125.95002365112305">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="337.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Montant" wrappingWidth="66.74995040893555">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <ScrollPane pannable="true" prefHeight="359.0" prefWidth="447.0" style="-fx-border-color: #ccc; -fx-background-color: #ccc;">
+         <content>
+            <VBox fx:id="transactionContainer" prefHeight="366.0" prefWidth="399.0" style="-fx-background-color: #ccc;">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </VBox>
+         </content>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </ScrollPane>
+      <AnchorPane prefHeight="74.0" prefWidth="418.0">
+         <children>
+            <Text layoutX="26.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solde : " wrappingWidth="59.630126953125">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="balanceText" layoutX="86.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\${balance}" wrappingWidth="180.17578125">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

@@ -122,16 +122,15 @@ public class BankAccount {
         // Return null if no matching account found
         return null;
     }
-  
-    public boolean deposit(double amount) throws IOException {
-        if (amount > 0) {
-            balance += amount;
-            transactions.add(new Transaction("deposit", amount, new Date()));
-            updateAccountInJson();
-            return true;
-        } else {
-            return false;
+    
+    public String deposit(double amount) throws IOException {
+        if (amount <= 0) {
+            return "Montant du dépôt invalide. Le montant doit être supérieur à 0.";
         }
+        balance += amount;
+        transactions.add(new Transaction("dépôt", amount, new Date()));
+        updateAccountInJson();
+        return "Dépôt réussi";
     }
 
     public String withdraw(double amount) throws IOException {
@@ -143,7 +142,7 @@ public class BankAccount {
         }
         
         balance -= amount;
-        transactions.add(new Transaction("retrait", amount, new Date()));
+        transactions.add(new Transaction("withdraw", amount, new Date()));
         updateAccountInJson();
         return "Retrait effectué avec succès.";
     }
@@ -169,7 +168,6 @@ public class BankAccount {
         String content = new String(Files.readAllBytes(Paths.get(DATA_PATH)));
         JSONArray users = new JSONArray(content);
 
-        // Find the user by account number and update the PIN
         for (int i = 0; i < users.length(); i++) {
             JSONObject user = users.getJSONObject(i);
             if (user.getString("account_number").equals(this.accountNumber)) {

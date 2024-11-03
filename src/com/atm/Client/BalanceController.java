@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class BalanceController {
     private Button actionButton7;
 
     @FXML
-    private Label balanceLabel;
+    private Text balanceLabel;
 
     private BankAccount bankAccount;
 

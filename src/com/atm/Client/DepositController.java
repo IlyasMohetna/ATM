@@ -36,17 +36,33 @@ public class DepositController {
     }
 
     private void handleDeposit() {
-        double amount = Double.parseDouble(depositAmount.getText());
-        try{
-            boolean deposit = bankAccount.deposit(amount);
-            if(deposit){
-                showAlert("Opération réussie", "Vitre dépôt de "+amount+"€ a effectué avec succès ! Votre nouveau solde a été mis à jour.");
+        String amountText = depositAmount.getText().trim();
+    
+        if (amountText.isEmpty()) {
+            showAlert("Erreur de saisie", "Veuillez entrer un montant pour le dépôt.");
+            return;
+        }
+    
+        try {
+            double amount = Double.parseDouble(amountText);
+    
+            String result = bankAccount.deposit(amount);
+    
+            if (result.equals("Dépôt réussi")) {
+                showAlert("Opération réussie", "Votre dépôt de " + String.format("%.2f", amount) + "€ a été effectué avec succès ! Votre nouveau solde a été mis à jour.");
                 handleBack();
             } else {
-                showAlert("Opération échouée", "Deposit failed");
+                showAlert("Opération échouée", result);
             }
+    
+        } catch (NumberFormatException e) {
+            showAlert("Erreur de format", "Veuillez entrer un montant numérique valide.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur de système", "Une erreur s'est produite lors de la mise à jour de votre solde. Veuillez réessayer plus tard.");
         } catch (Exception e) {
             e.printStackTrace();
+            showAlert("Erreur inconnue", "Une erreur inattendue s'est produite. Veuillez contacter le support si le problème persiste.");
         }
     }
 

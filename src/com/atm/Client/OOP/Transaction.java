@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.json.JSONObject;
 
-class Transaction {
+public class Transaction {
     private String type;
     private double amount;
     private Date date;
@@ -26,6 +26,10 @@ class Transaction {
 
     public Date getDate() {
         return date;
+    }
+
+    public String getLocalType() {
+        return type.equalsIgnoreCase("deposit") ? "Dépôt" : "Retrait";
     }
 
     public JSONObject toJSON() {

@@ -45,6 +45,7 @@ public class MenuController {
         actionButton2.setOnAction(event -> handleChangePin());
         actionButton3.setOnAction(event -> handleLogout());
         actionButton5.setOnAction(event -> handleWithdraw());
+        actionButton6.setOnAction(event -> handleStatement());
         actionButton7.setOnAction(event -> handleBalance());
     }
 
@@ -115,6 +116,26 @@ public class MenuController {
 
             stage.setScene(new Scene(loginRoot));
             stage.setTitle("Login");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleStatement() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Statement.fxml"));
+            Parent statementRoot = loader.load();
+
+            StatementController statementController = loader.getController();
+            statementController.setBankAccount(bankAccount);
+
+            Stage statementStage = new Stage();
+            statementStage.setScene(new Scene(statementRoot));
+            statementStage.setTitle("Statement");
+            
+            // Show the new window
+            statementStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
