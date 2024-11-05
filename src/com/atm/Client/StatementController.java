@@ -8,13 +8,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.geometry.Pos;
 
-import com.atm.Client.OOP.BankAccount;
-import com.atm.Client.OOP.Transaction;
-
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import com.atm.OOP.BankAccount;
+import com.atm.OOP.Transaction;
 public class StatementController {
 
     @FXML

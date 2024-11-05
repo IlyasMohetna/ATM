@@ -10,9 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import javafx.scene.media.Media;
+import com.atm.OOP.BankAccount;
 
-import com.atm.Client.OOP.BankAccount;
+import javafx.scene.media.Media;
 
 public class MenuController {
 

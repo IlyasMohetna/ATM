@@ -1,7 +1,5 @@
 package com.atm.Admin;
 
-import com.atm.Client.OOP.AccountManager;
-import com.atm.Client.OOP.BankAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +17,9 @@ import javafx.stage.Stage;
 import javafx.beans.property.SimpleStringProperty;
 import java.io.IOException;
 import java.util.Date;
+
+import com.atm.OOP.AccountManager;
+import com.atm.OOP.BankAccount;
 
 public class UsersController {
 

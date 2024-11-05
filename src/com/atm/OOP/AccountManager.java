@@ -1,4 +1,4 @@
-package com.atm.Client.OOP;
+package com.atm.OOP;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

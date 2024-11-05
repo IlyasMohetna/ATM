@@ -1,6 +1,5 @@
 package com.atm.Admin;
 
-import com.atm.Client.OOP.BankAccount;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import com.atm.OOP.BankAccount;
 
 public class AddUserController {
 

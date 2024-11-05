@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.atm.Client.OOP.BankAccount;
+import com.atm.OOP.BankAccount;
 
 public class ChangePinController {
     @FXML

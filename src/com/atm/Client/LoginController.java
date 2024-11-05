@@ -10,9 +10,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import com.atm.Client.OOP.BankAccount;
-
 import java.io.IOException;
+
+import com.atm.OOP.BankAccount;
 
 public class LoginController {
 

@@ -1,4 +1,4 @@
-package com.atm.Client.OOP;
+package com.atm.OOP;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -91,6 +91,8 @@ public class BankAccount {
         return transactions;
     }
 
+    // Functions 
+
     public static BankAccount authenticate(String accountNumber, String pin) throws IOException {
         String content = new String(Files.readAllBytes(Paths.get(DATA_PATH)));
         JSONArray users = new JSONArray(content);
@@ -154,10 +156,6 @@ public class BankAccount {
         transactions.add(new Transaction("withdraw", amount, new Date()));
         updateAccountInJson();
         return "Retrait effectué avec succès.";
-    }
-
-    public double checkBalance() {
-        return balance;
     }
 
     public String changePin(String actualPin, String newPin, String confirmNewPin) throws IOException {

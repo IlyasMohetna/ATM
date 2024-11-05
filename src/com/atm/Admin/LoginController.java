@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.atm.Utils.UIAlert;
+
 
 public class LoginController {
 
@@ -44,7 +46,7 @@ public class LoginController {
         if (authenticateUser(email, password)) {
             navigateToDashboard();
         } else {
-            showAlert("Error", "Invalid email or password.");
+            UIAlert.showError("Erreur", "L'adresse email ou mot de passe invalide !", true);
         }
     }
 
@@ -83,7 +85,7 @@ public class LoginController {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert("Error", "Une erreur s'est produite lors de la lecture des données des administrateurs.");
+            UIAlert.showError("Erreur", "Une erreur s'est produite lors de la lecture des données des administrateurs.", true);
         }
 
         return false;
