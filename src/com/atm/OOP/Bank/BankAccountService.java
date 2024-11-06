@@ -17,7 +17,7 @@ public class BankAccountService {
 
     public void authenticate(String accountNumber, String pin) throws IOException {
         bankAccount = repository.findByAccountNumberAndPin(accountNumber, pin)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid credentials"));
+                .orElseThrow(() -> new IllegalArgumentException("Numéro de compte ou code PIN incorrect"));
     }
 
     public void deposit(double amount) throws IOException {
