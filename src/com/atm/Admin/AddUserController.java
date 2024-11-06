@@ -7,9 +7,9 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-import com.atm.OOP.BankAccount;
-import com.atm.OOP.BankAccountRepository;
-import com.atm.OOP.BankAccountRepositoryImpl;
+import com.atm.OOP.Bank.BankAccount;
+import com.atm.OOP.Bank.BankAccountRepository;
+import com.atm.OOP.Bank.BankAccountRepositoryImpl;
 import com.atm.Utils.UIAlert;
 
 public class AddUserController extends AdminBaseController {

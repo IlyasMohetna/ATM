@@ -56,7 +56,6 @@ public class UsersController extends AdminBaseController {
             return new SimpleStringProperty(dateString);
         });
 
-        // Load users from AccountManager
         loadUsers();
         usersTable.setItems(userList);
     }
