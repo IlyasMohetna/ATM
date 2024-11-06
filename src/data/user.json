@@ -2,147 +2,12 @@
     "account_number": "123456789",
     "firstname": "John",
     "pin": "1111",
-    "balance": 1617.8899999999994,
+    "balance": 1000.8899999999994,
     "creation_date": "2024-11-02 21:56:00",
     "transactions": [
         {
-            "date": "2024-11-04 13:55:27",
-            "amount": 120,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-03 13:04:18",
-            "amount": 1000,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 13:03:51",
-            "amount": 1000,
-            "type": "dépôt"
-        },
-        {
-            "date": "2024-11-03 10:38:07",
-            "amount": 25,
-            "type": "dépôt"
-        },
-        {
-            "date": "2024-11-03 10:34:02",
-            "amount": 18000,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 10:19:30",
-            "amount": 5.89,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-03 09:44:00",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:44:00",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:43:45",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:43:45",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:43:30",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:43:30",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:43:15",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:43:15",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:43:00",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:43:00",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:42:45",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:42:45",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:42:30",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:42:30",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:42:15",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:42:00",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:41:45",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:41:30",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:41:15",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:41:00",
-            "amount": 100,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-03 09:40:45",
-            "amount": 11111,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-03 09:09:37",
-            "amount": 500,
+            "date": "2024-11-06 05:13:58",
+            "amount": 234,
             "type": "withdraw"
         },
         {
@@ -156,24 +21,9 @@
             "type": "deposit"
         },
         {
-            "date": "2024-11-04 13:56:29",
-            "amount": 15,
+            "date": "2024-11-06 05:14:07",
+            "amount": 383,
             "type": "withdraw"
-        },
-        {
-            "date": "2024-11-06 02:23:44",
-            "amount": 200,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-06 02:26:12",
-            "amount": 10,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-06 02:52:34",
-            "amount": 1111,
-            "type": "deposit"
         }
     ],
     "lastname": "Doe"

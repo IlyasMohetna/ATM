@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import com.atm.OOP.BankAccount;
 
-public class AddUserController {
+public class AddUserController extends AdminBaseController {
 
     @FXML
     private TextField firstNameField;
@@ -31,65 +31,45 @@ public class AddUserController {
     private TextField balanceField;
 
     @FXML
-    private Button addButton;
-
-    @FXML
-    private Button btnSignout;
-
-    @FXML
     private Button generatePinButton;
 
     @FXML
     public void initialize() {
-        btnSignout.setOnAction(event -> handleLogout());
-        addButton.setOnAction(event -> handleAddAccount());
+        super.initialize();
+
         generatePinButton.setOnAction(event -> generateNewPin());
         generateAccountNumberAndPin();
     }
 
-    private void handleLogout() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Admin/Login.fxml"));
-            Parent loginRoot = loader.load();
+    // private void handleAddAccount() {
+    //     String firstname = firstNameField.getText();
+    //     String lastname = lastNameField.getText();
+    //     String accountNumber = accountNumberField.getText();
+    //     String pin = pinField.getText();
+    //     double initialBalance;
 
-            Stage stage = (Stage) btnSignout.getScene().getWindow();
-            stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Login");
+    //     // Validate and parse the balance
+    //     try {
+    //         initialBalance = Double.parseDouble(balanceField.getText());
+    //     } catch (NumberFormatException e) {
+    //         showAlert("Erreur", "Balance initiale invalide.");
+    //         return;
+    //     }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    //     // Create the account
+    //     try {
+    //         String resultMessage = BankAccount.createAccount(accountNumber, pin, firstname, lastname, initialBalance);
+    //         showAlert("Résultat", resultMessage);
 
-    private void handleAddAccount() {
-        String firstname = firstNameField.getText();
-        String lastname = lastNameField.getText();
-        String accountNumber = accountNumberField.getText();
-        String pin = pinField.getText();
-        double initialBalance;
-
-        // Validate and parse the balance
-        try {
-            initialBalance = Double.parseDouble(balanceField.getText());
-        } catch (NumberFormatException e) {
-            showAlert("Erreur", "Balance initiale invalide.");
-            return;
-        }
-
-        // Create the account
-        try {
-            String resultMessage = BankAccount.createAccount(accountNumber, pin, firstname, lastname, initialBalance);
-            showAlert("Résultat", resultMessage);
-
-            if (resultMessage.equals("Compte créé avec succès.")) {
-                clearForm(); // Clear the form fields if account creation is successful
-                generateAccountNumberAndPin(); // Generate new account number and PIN for next user
-            }
-        } catch (IOException e) {
-            showAlert("Erreur", "Une erreur est survenue lors de la création du compte.");
-            e.printStackTrace();
-        }
-    }
+    //         if (resultMessage.equals("Compte créé avec succès.")) {
+    //             clearForm(); // Clear the form fields if account creation is successful
+    //             generateAccountNumberAndPin(); // Generate new account number and PIN for next user
+    //         }
+    //     } catch (IOException e) {
+    //         showAlert("Erreur", "Une erreur est survenue lors de la création du compte.");
+    //         e.printStackTrace();
+    //     }
+    // }
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -22,6 +22,11 @@ public class NavigationService {
     public static final String STATEMENT = "/fxml/Client/Statement.fxml";
     public static final String BALANCE = "/fxml/Client/Balance.fxml";
 
+    public static final String ANALYTICS = "/fxml/Admin/Analytics.fxml";
+    public static final String USERS = "/fxml/Admin/Users.fxml";
+    public static final String ADD_USER = "/fxml/Admin/AddUser.fxml";
+    public static final String LOGIN_ADMIN = "/fxml/Admin/Login.fxml";
+
     public static void navigateTo(Stage stage, String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(NavigationService.class.getResource(fxmlPath));

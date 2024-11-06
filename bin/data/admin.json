@@ -2,7 +2,8 @@
   {
     "email": "admin@example.com",
     "password": "password123",
-    "fullname": "Ilyas MOHETNA",
+    "firstname": "Ilyas",
+    "lastname": "MOHETNA",
     "avatar": "/images/avatar/jimmy-fallon.png"
   }
 ]

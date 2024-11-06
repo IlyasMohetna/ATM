@@ -8,7 +8,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.geometry.Pos;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Comparator;
 
@@ -31,13 +30,7 @@ public class StatementController extends BaseController {
 
     @FXML
     private Text accountHolderText;
-
-    // Remove the uninitialized bankAccount variable
-    // private BankAccount bankAccount;
-
-    // Use SimpleDateFormat for java.util.Date
-    private static final SimpleDateFormat DISPLAY_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
+    
     @FXML
     public void initialize() {
         super.initialize();
@@ -76,7 +69,7 @@ public class StatementController extends BaseController {
             transactionRow.setSpacing(10);
 
             // Format date, type, and amount
-            String date = DISPLAY_DATE_FORMAT.format(transaction.getDate());
+            String date = BankAccount.DATE_FORMAT.format(transaction.getDate());
             String type = transaction.getType();
             String amount = String.format("%,.2f €", transaction.getAmount());
 

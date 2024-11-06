@@ -1,5 +1,6 @@
 package com.atm.OOP;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,8 @@ public class BankAccount {
     private double balance;
     private Date creationDate;
     private List<Transaction> transactions;
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
 
     public BankAccount(String accountNumber, String pin, String firstname, String lastname, double balance, Date creationDate, List<Transaction> transactions) {
         this.accountNumber = accountNumber;
