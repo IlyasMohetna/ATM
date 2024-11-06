@@ -8,9 +8,9 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
-import com.atm.OOP.BankAccountService;
-import com.atm.OOP.NavigationService;
-import com.atm.OOP.SoundService;
+import com.atm.OOP.Bank.BankAccountService;
+import com.atm.Utils.NavigationService;
+import com.atm.Utils.SoundService;
 
 public abstract class BaseController {
 

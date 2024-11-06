@@ -5,8 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import com.atm.OOP.NavigationService;
 import com.atm.OOP.Admin.AdminService;
+import com.atm.Utils.NavigationService;
 
 public abstract class AdminBaseController {
     @FXML

@@ -11,8 +11,8 @@ import javafx.geometry.Pos;
 import java.util.List;
 import java.util.Comparator;
 
-import com.atm.OOP.BankAccount;
-import com.atm.OOP.Transaction;
+import com.atm.OOP.Bank.BankAccount;
+import com.atm.OOP.Bank.Transaction;
 
 public class StatementController extends BaseController {
 
@@ -30,7 +30,7 @@ public class StatementController extends BaseController {
 
     @FXML
     private Text accountHolderText;
-    
+
     @FXML
     public void initialize() {
         super.initialize();

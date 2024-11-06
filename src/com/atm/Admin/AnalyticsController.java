@@ -1,8 +1,8 @@
 package com.atm.Admin;
 
-import com.atm.OOP.BankAccountRepository;
-import com.atm.OOP.BankAccountRepositoryImpl;
 import com.atm.OOP.Admin.BankAnalytics;
+import com.atm.OOP.Bank.BankAccountRepository;
+import com.atm.OOP.Bank.BankAccountRepositoryImpl;
 
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;

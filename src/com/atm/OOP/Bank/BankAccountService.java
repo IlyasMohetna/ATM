@@ -1,4 +1,4 @@
-package com.atm.OOP;
+package com.atm.OOP.Bank;
 
 import java.io.IOException;
 import java.util.Date;

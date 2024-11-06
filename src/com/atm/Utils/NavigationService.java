@@ -1,4 +1,4 @@
-package com.atm.OOP;
+package com.atm.Utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,12 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-// import com.atm.Client.BalanceController;
-// import com.atm.Client.ChangePinController;
-// import com.atm.Client.DepositController;
-// import com.atm.Client.StatementController;
-// import com.atm.Client.WithdrawController;
 
 public class NavigationService {
     public static final String LOGIN = "/fxml/Client/Login.fxml";

@@ -1,4 +1,4 @@
-package com.atm.OOP;
+package com.atm.OOP.Bank;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

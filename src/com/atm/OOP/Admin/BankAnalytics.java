@@ -1,8 +1,8 @@
 package com.atm.OOP.Admin;
 
-import com.atm.OOP.BankAccount;
-import com.atm.OOP.BankAccountRepository;
-import com.atm.OOP.Transaction;
+import com.atm.OOP.Bank.BankAccount;
+import com.atm.OOP.Bank.BankAccountRepository;
+import com.atm.OOP.Bank.Transaction;
 
 import java.io.IOException;
 import java.util.List;
