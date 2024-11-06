@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 import com.atm.OOP.Bank.BankAccountRepositoryImpl;
+import com.atm.Utils.UIAlert;
 
 public class WelcomeController extends Application {
 
@@ -83,13 +84,14 @@ public class WelcomeController extends Application {
         if (userFile.exists()) {
             boolean deleted = userFile.delete();
             if (!deleted) {
-                System.err.println("Failed to delete the database file");
+                UIAlert.showError("Erreur", "Impossible de réinitialiser la base de données", true);
                 return;
             }
         }
 
         try {
             BankAccountRepositoryImpl.initializeDataFile();
+            UIAlert.showSuccess("Succès", "Base de données réinitialisée avec succès", false);
         } catch (IOException e) {
             e.printStackTrace();
         } 
