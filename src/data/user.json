@@ -1,31 +1,33 @@
 [
-  {
-    "account_number": "123456789",
-    "firstname": "John",
-    "pin": "1111",
-    "balance": 1101.8899999999994,
-    "creation_date": "11/04/2024 21:56:00",
-    "transactions": [
-      {
-        "date": "06/11/2024 05:25:49",
-        "amount": 123,
-        "type": "deposit"
-      },
-      {
-        "date": "06/11/2024 05:25:55",
-        "amount": 22,
-        "type": "withdraw"
-      }
-    ],
-    "lastname": "Doe"
-  },
-  {
-    "account_number": "584579488",
-    "firstname": "Ilyas",
-    "pin": "5289",
-    "balance": 854,
-    "creation_date": "06/11/2024 05:44:52",
-    "transactions": [],
-    "lastname": "Mohetna"
-  }
+    {
+        "account_number": "123456789",
+        "firstname": "John",
+        "pin": "1111",
+        "balance": 250,
+        "creation_date": "11/04/2024 21:56:00",
+        "transactions": [{
+            "date": "06/11/2024 10:03:42",
+            "amount": 250,
+            "type": "deposit"
+        }],
+        "lastname": "Doe"
+    },
+    {
+        "account_number": "584579488",
+        "firstname": "Ilyas",
+        "pin": "5289",
+        "balance": 854,
+        "creation_date": "06/11/2024 05:44:52",
+        "transactions": [],
+        "lastname": "Mohetna"
+    },
+    {
+        "account_number": "668524061",
+        "firstname": "Anas",
+        "pin": "9660",
+        "balance": 250,
+        "creation_date": "06/11/2024 10:04:20",
+        "transactions": [],
+        "lastname": "Anas"
+    }
 ]

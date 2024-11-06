@@ -3,13 +3,15 @@ package com.atm.OOP.Admin;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
 public class AdminRepository {
-    private static final String DATA_PATH = "src/data/admin.json";
+    private static final String DATA_PATH = "data/admin.json";
 
     public Optional<Admin> findByEmailAndPassword(String email, String password) throws IOException {
         JSONArray users = readUsersFromFile();
@@ -26,8 +28,13 @@ public class AdminRepository {
     }
 
     private JSONArray readUsersFromFile() throws IOException {
-        String content = new String(Files.readAllBytes(Paths.get(DATA_PATH)));
-        return new JSONArray(content);
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(DATA_PATH)) {
+            if (is == null) {
+                throw new FileNotFoundException("Resource not found: data/admin.json");
+            }
+            String content = new String(is.readAllBytes());
+            return new JSONArray(content);
+        }
     }
 
     private Admin parseAdminAccount(JSONObject adminJson) {

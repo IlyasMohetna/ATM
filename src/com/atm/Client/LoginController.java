@@ -62,6 +62,9 @@ public class LoginController {
         } catch (IOException e) {
             UIAlert.showGeneralError();
             System.err.println(e);
-        }   
+        } catch (Exception e) {
+            UIAlert.showGeneralError();
+            System.err.println(e);
+        }
     }
 }

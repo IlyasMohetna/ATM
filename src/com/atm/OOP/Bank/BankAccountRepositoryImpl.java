@@ -3,14 +3,16 @@ package com.atm.OOP.Bank;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.*;
 
 public class BankAccountRepositoryImpl implements BankAccountRepository {
-    private static final String DATA_PATH = "src/data/user.json";
+    private static final String DATA_PATH = "data/user.json";
 
     @Override
     public List<BankAccount> getAllAccounts() throws IOException {
@@ -115,9 +117,15 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
 
     // Helper methods
     private JSONArray readUsersFromFile() throws IOException {
-        String content = new String(Files.readAllBytes(Paths.get(DATA_PATH)));
-        return new JSONArray(content);
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(DATA_PATH)) {
+            if (is == null) {
+                throw new FileNotFoundException("Resource not found: data/user.json");
+            }
+            String content = new String(is.readAllBytes());
+            return new JSONArray(content);
+        }
     }
+        
 
     private void writeUsersToFile(JSONArray users) throws IOException {
         Files.write(Paths.get(DATA_PATH), users.toString(4).getBytes());
