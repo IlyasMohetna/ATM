@@ -1,19 +1,14 @@
 package com.atm.Client;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.atm.OOP.BankAccount;
+import com.atm.Utils.UIAlert;
 
-public class WithdrawController {
+public class WithdrawController extends BaseController {
     @FXML
     private Button actionButton7;
 
@@ -23,58 +18,30 @@ public class WithdrawController {
     @FXML
     private TextField withdrawAmount;
 
-    private BankAccount bankAccount;
-
     @FXML
     public void initialize() {
-        actionButton7.setOnAction(event -> handleWithdraw());
-        actionButton8.setOnAction(event -> handleBack());
-    }
+        super.initialize();
 
-    public void setBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
+        actionButton7.setOnAction(event -> handleWithdraw());
+        actionButton8.setOnAction(event -> handleAction("menu"));
     }
 
     private void handleWithdraw() {
         double amount = Double.parseDouble(withdrawAmount.getText());
     
         try {
-            String resultMessage = bankAccount.withdraw(amount);
-    
-            if (resultMessage.equals("Retrait effectué avec succès.")) {
-                showAlert("Opération réussie", resultMessage);
-                handleBack();
-            } else {
-                showAlert("Opération échouée", resultMessage);
-            }
+            getBankAccountService().withdraw(amount);
+            UIAlert.showSuccess("Opération réussie", "Votre retrait de " + String.format("%.2f", amount) + "€ a été effectué avec succès ! Votre nouveau solde a été mis à jour.", false);
+            handleAction("menu");
+        } catch (IllegalArgumentException e) {
+            UIAlert.showWarning("Erreur", e.getMessage(), true);
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert("Opération échouée", "Une erreur est survenue lors de la mise à jour du compte.");
+            UIAlert.showError("Erreur", "Une erreur s'est produite lors de la mise à jour de votre solde. Veuillez réessayer plus tard.", true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            UIAlert.showGeneralError();
         }
     }
 
-    private void handleBack() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Menu.fxml"));
-            Parent loginRoot = loader.load();
-
-            MenuController menuController = loader.getController();
-            menuController.setBankAccount(bankAccount);
-
-            Stage stage = (Stage) actionButton7.getScene().getWindow();
-            stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Dashboard");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }

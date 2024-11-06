@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -52,21 +51,19 @@ public class LoginController {
 
     private void navigateToDashboard() {
         try {
-            // Load Dashboard.fxml directly
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Admin/Dashboard.fxml"));
             Parent dashboardRoot = loader.load();
 
             DashboardController dashboardController = loader.getController();
             dashboardController.setUserDetails(fullname, avatar);
 
-            // Get the current stage (window) and set the new scene
             Stage stage = (Stage) loginButton.getScene().getWindow();
             stage.setScene(new Scene(dashboardRoot));
             stage.setTitle("Dashboard");
 
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert("Error", "Failed to load the dashboard.");
+            UIAlert.showError("Erreur", "Impossible de charger le tableau de bord !", true);
         }
     }
 
@@ -89,13 +86,5 @@ public class LoginController {
         }
 
         return false;
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

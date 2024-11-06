@@ -1,205 +1,33 @@
 package com.atm.Client;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-
-import com.atm.OOP.BankAccount;
-
-import javafx.scene.media.Media;
-
-public class MenuController {
+public class MenuController extends BaseController {
 
     @FXML
     private Button actionButton1;
-
     @FXML
     private Button actionButton2;
-
     @FXML
     private Button actionButton3;
-
+    @FXML
+    private Button actionButton5;
+    @FXML
+    private Button actionButton6;
     @FXML
     private Button actionButton7;
 
     @FXML
-    private Button actionButton4;
-
-    @FXML
-    private Button actionButton5;
-
-    @FXML
-    private Button actionButton6;
-
-    @FXML
-    private Button actionButton8;
-
-    private MediaPlayer buttonSoundPlayer;
-
-    private BankAccount bankAccount;
-
-    @FXML
     public void initialize() {
-        preloadAudio();
-
-        actionButton1.setOnAction(event -> {
-            playButtonSound();
-            handleDeposit();
-        });
-        actionButton2.setOnAction(event -> {
-            playButtonSound();
-            handleChangePin();
-        });
-        actionButton3.setOnAction(event -> {
-            playButtonSound();
-            handleLogout();
-        });
-        actionButton5.setOnAction(event -> {
-            playButtonSound();
-            handleWithdraw();
-        });
-        actionButton6.setOnAction(event -> {
-            playButtonSound();
-            handleStatement();
-        });
-        actionButton7.setOnAction(event -> {
-            playButtonSound();
-            handleBalance();
-        });
+        super.initialize();
+        actionButton1.setOnAction(event -> handleAction("deposit"));
+        actionButton2.setOnAction(event -> handleAction("changePin"));
+        actionButton3.setOnAction(event -> handleAction("logout"));
+        actionButton5.setOnAction(event -> handleAction("withdraw"));
+        actionButton6.setOnAction(event -> handleAction("statement"));
+        actionButton7.setOnAction(event -> handleAction("balance"));
     }
 
-    
-    private void playButtonSound() {
-        buttonSoundPlayer.seek(javafx.util.Duration.ZERO); // Reset playback to start
-        buttonSoundPlayer.play();
-    }
 
-    private void preloadAudio() {
-        Media sound = new Media(getClass().getResource("/audio/atm_button_sound.mp3").toExternalForm());
-        buttonSoundPlayer = new MediaPlayer(sound);
-        
-        buttonSoundPlayer.setVolume(0);
-        buttonSoundPlayer.play();
-        
-        // Set volume back to normal after initialization
-        buttonSoundPlayer.setOnEndOfMedia(() -> buttonSoundPlayer.setVolume(1.0));
-    }
-    
-    
-
-    public void setBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-
-    private void handleDeposit() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Deposit.fxml"));
-            Parent loginRoot = loader.load();
-
-            DepositController depositController = loader.getController();
-            depositController.setBankAccount(bankAccount);
-
-            Stage stage = (Stage) actionButton3.getScene().getWindow();
-
-            stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Login");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void handleChangePin() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/ChangePin.fxml"));
-            Parent loginRoot = loader.load();
-
-            ChangePinController changePinController = loader.getController();
-            changePinController.setBankAccount(bankAccount);
-
-            Stage stage = (Stage) actionButton3.getScene().getWindow();
-
-            stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Login");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void handleLogout() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Login.fxml"));
-            Parent loginRoot = loader.load();
-
-            Stage stage = (Stage) actionButton3.getScene().getWindow();
-
-            stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Login");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void handleWithdraw() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Withdraw.fxml"));
-            Parent loginRoot = loader.load();
-
-            WithdrawController withdrawController = loader.getController();
-            withdrawController.setBankAccount(bankAccount);
-
-            Stage stage = (Stage) actionButton3.getScene().getWindow();
-
-            stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Login");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void handleStatement() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Statement.fxml"));
-            Parent statementRoot = loader.load();
-
-            StatementController statementController = loader.getController();
-            statementController.setBankAccount(bankAccount);
-
-            Stage statementStage = new Stage();
-            statementStage.setScene(new Scene(statementRoot));
-            statementStage.setTitle("Statement");
-            
-            statementStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void handleBalance() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Balance.fxml"));
-            Parent loginRoot = loader.load();
-
-            BalanceController balanceController = loader.getController();
-            balanceController.setBankAccount(bankAccount);
-
-            Stage stage = (Stage) actionButton3.getScene().getWindow();
-
-            stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Login");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

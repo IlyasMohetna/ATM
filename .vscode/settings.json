@@ -13,5 +13,6 @@
     "c:\\Users\\Ilyas Mohetna\\Downloads\\fontawesomefx-8.1.jar",
     "c:\\javafx-sdk-23.0.1\\lib\\javafx.media.jar",
     "c:\\javafx-sdk-23.0.1\\lib\\javafx.web.jar"
-  ]
+  ],
+  "java.debug.settings.onBuildFailureProceed": true
 }

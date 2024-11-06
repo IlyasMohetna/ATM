@@ -2,8 +2,6 @@ package com.atm.OOP;
 
 import java.util.Date;
 
-import org.json.JSONObject;
-
 public class Transaction {
     private String type;
     private double amount;
@@ -15,28 +13,7 @@ public class Transaction {
         this.date = date;
     }
 
-    // Getters
-    public String getType() {
-        return type;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public String getLocalType() {
-        return type.equalsIgnoreCase("deposit") ? "Dépôt" : "Retrait";
-    }
-
-    public JSONObject toJSON() {
-        JSONObject transaction = new JSONObject();
-        transaction.put("type", type);
-        transaction.put("amount", amount);
-        transaction.put("date", BankAccount.DATE_FORMAT.format(date));
-        return transaction;
-    }
+    public String getType() { return type; }
+    public double getAmount() { return amount; }
+    public Date getDate() { return date; }
 }

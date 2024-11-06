@@ -20,7 +20,6 @@ public class AccountManager {
         loadAccounts();
     }
 
-    // Load all accounts from the JSON file
     private void loadAccounts() {
         try {
             String content = new String(Files.readAllBytes(Paths.get(BankAccount.DATA_PATH)));
@@ -72,7 +71,6 @@ public class AccountManager {
         }
     }
 
-    // Getter for accounts
     public List<BankAccount> getAccounts() {
         return accounts;
     }

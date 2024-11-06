@@ -1,19 +1,14 @@
 package com.atm.Client;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.atm.OOP.BankAccount;
+import com.atm.Utils.UIAlert;
 
-public class ChangePinController {
+public class ChangePinController extends BalanceController {
     @FXML
     private Button actionButton4;
 
@@ -29,16 +24,12 @@ public class ChangePinController {
     @FXML
     private PasswordField confirmNewPIN;
 
-    private BankAccount bankAccount;
-
     @FXML
     public void initialize() {
-        actionButton8.setOnAction(event -> handleChangePin());
-        actionButton4.setOnAction(event -> handleBack());
-    }
+        super.initialize();
 
-    public void setBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
+        actionButton8.setOnAction(event -> handleChangePin());
+        actionButton4.setOnAction(event -> handleAction("menu"));
     }
 
     private void handleChangePin() {
@@ -47,42 +38,20 @@ public class ChangePinController {
         String confirmNewPin = confirmNewPIN.getText();
     
         try {
-            String resultMessage = bankAccount.changePin(actualPin, newPin, confirmNewPin);
+            getBankAccountService().changePin(actualPin, newPin, confirmNewPin);
             
-            if (resultMessage.equals("Votre PIN a été mis à jour avec succès.")) {
-                showAlert("Opération réussie", resultMessage);
-                handleBack();
-            } else {
-                showAlert("Opération échouée", resultMessage);
-            }
+            UIAlert.showSuccess("Opération réussie", "Votre PIN a été mis à jour avec succès.", false);
+            handleAction("menu");
+
+        } catch (IllegalArgumentException e) {
+            UIAlert.showWarning("Erreur", e.getMessage(), true);
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert("Opération échouée", "Un problème est survenu lors de la mise à jour de votre PIN.");
+            UIAlert.showError("Erreur", "Une erreur s'est produite lors de la mise à jour de votre PIN. Veuillez réessayer plus tard.", true);
+        }catch (Exception e) {
+            e.printStackTrace();
+            UIAlert.showGeneralError();
         }
     }
 
-    private void handleBack() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Client/Menu.fxml"));
-            Parent loginRoot = loader.load();
-
-            MenuController menuController = loader.getController();
-            menuController.setBankAccount(bankAccount);
-
-            Stage stage = (Stage) actionButton4.getScene().getWindow();
-            stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Dashboard");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }
