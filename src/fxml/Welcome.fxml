@@ -45,7 +45,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:controller="com.atm.WelcomeController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atm.WelcomeController">
    <left>
       <AnchorPane prefHeight="700.0" prefWidth="650.0" style="-fx-background-color: #087ec5;" BorderPane.alignment="CENTER">
          <children>
@@ -188,36 +188,44 @@
                   <Font name="System Bold" size="23.0" />
                </font>
             </Text>
-            <Pane layoutX="164.0" layoutY="163.0" prefHeight="200.0" prefWidth="309.0" style="-fx-background-color: #f8b73c; -fx-background-radius: 30;">
+            <Pane layoutX="164.0" layoutY="163.0" prefHeight="170.0" prefWidth="296.0" style="-fx-background-color: #f8b73c; -fx-background-radius: 30;">
                <children>
-                  <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="134.0" layoutY="91.0" size="5em" />
-                  <Text fill="WHITE" layoutX="113.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" textAlignment="CENTER">
+                  <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="128.0" layoutY="72.0" size="5em" />
+                  <Text fill="WHITE" layoutX="107.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" textAlignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Button fx:id="clientOptionButton" layoutX="-16.0" layoutY="-3.0" mnemonicParsing="false" prefHeight="212.0" prefWidth="330.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="clientOptionButton" layoutX="-16.0" layoutY="-3.0" mnemonicParsing="false" prefHeight="177.0" prefWidth="322.0" style="-fx-background-color: transparent;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                </children>
             </Pane>
-            <Pane layoutX="166.0" layoutY="441.0" prefHeight="200.0" prefWidth="309.0" style="-fx-background-color: #6495ED; -fx-background-radius: 30;">
+            <Pane layoutX="160.0" layoutY="369.0" prefHeight="170.0" prefWidth="296.0" style="-fx-background-color: #6495ED; -fx-background-radius: 30;">
                <children>
-                  <FontAwesomeIcon fill="WHITE" iconName="GEAR" layoutX="128.0" layoutY="94.0" size="5em" />
-                  <Text fill="WHITE" layoutX="14.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administration" textAlignment="CENTER" wrappingWidth="291.4767761230469">
+                  <FontAwesomeIcon fill="WHITE" iconName="GEAR" layoutX="128.0" layoutY="72.0" size="5em" />
+                  <Text fill="WHITE" layoutX="39.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrateur" textAlignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Button fx:id="adminOptionButton" layoutX="-15.0" layoutY="5.0" mnemonicParsing="false" prefHeight="212.0" prefWidth="330.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="adminOptionButton" layoutX="-13.0" layoutY="-8.0" mnemonicParsing="false" prefHeight="175.0" prefWidth="319.0" style="-fx-background-color: transparent;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                </children>
             </Pane>
+            <Button fx:id="resetDBButton" layoutX="200.0" layoutY="597.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="221.0" style="-fx-background-color: red;" text="Reiniatialiser la base de donnée" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </right>

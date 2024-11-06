@@ -6,10 +6,21 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class AdminRepository {
-    private static final String DATA_PATH = "data/admin.json";
+    private static final String SRC_ADMIN_DATA_PATH = "data/admin.json";
+    private static final String LOCAL_ADMIN_DATA_PATH = System.getProperty("user.home") + "/ATMApp/admin.json";
+
+    public AdminRepository() {
+        try {
+            initializeDataFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Optional<Admin> findByEmailAndPassword(String email, String password) throws IOException {
         JSONArray users = readUsersFromFile();
@@ -26,13 +37,8 @@ public class AdminRepository {
     }
 
     private JSONArray readUsersFromFile() throws IOException {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream(DATA_PATH)) {
-            if (is == null) {
-                throw new FileNotFoundException("Resource not found: data/admin.json");
-            }
-            String content = new String(is.readAllBytes());
-            return new JSONArray(content);
-        }
+        String content = new String(Files.readAllBytes(Paths.get(LOCAL_ADMIN_DATA_PATH)));
+        return new JSONArray(content);
     }
 
     private Admin parseAdminAccount(JSONObject adminJson) {
@@ -43,5 +49,17 @@ public class AdminRepository {
         String avatar = adminJson.getString("avatar");
 
         return new Admin(email, password, firstname, lastname, avatar);
+    }
+
+    private void initializeDataFile() throws IOException {
+        java.nio.file.Path localPath = Paths.get(LOCAL_ADMIN_DATA_PATH);
+    
+        if (!Files.exists(localPath)) {
+            Files.createDirectories(localPath.getParent());
+            try (InputStream is = getClass().getClassLoader().getResourceAsStream(SRC_ADMIN_DATA_PATH)) {
+                if (is == null) throw new FileNotFoundException("Resource not found: " + SRC_ADMIN_DATA_PATH);
+                Files.copy(is, localPath);
+            }
+        }
     }
 }

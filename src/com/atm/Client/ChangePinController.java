@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import com.atm.Utils.UIAlert;
 
-public class ChangePinController extends BalanceController {
+public class ChangePinController extends BaseController {
     @FXML
     private Button actionButton4;
 

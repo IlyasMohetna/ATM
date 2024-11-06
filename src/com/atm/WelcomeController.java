@@ -7,8 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-
+import java.io.File;
 import java.io.IOException;
+
+import com.atm.OOP.Bank.BankAccountRepositoryImpl;
 
 public class WelcomeController extends Application {
 
@@ -18,9 +20,13 @@ public class WelcomeController extends Application {
     @FXML
     private Button adminOptionButton;
 
+    @FXML 
+    private Button resetDBButton;
+
     public void initialize() {
         clientOptionButton.setOnAction(event -> handleClientOption());
         adminOptionButton.setOnAction(event -> handleAdminOption());
+        resetDBButton.setOnAction(event -> handleResetDB());
     }
 
     private void handleClientOption() {
@@ -69,5 +75,25 @@ public class WelcomeController extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void handleResetDB() {
+        File userFile = new File(BankAccountRepositoryImpl.LOCAL_USER_DATA_PATH);
+
+        if (userFile.exists()) {
+            boolean deleted = userFile.delete();
+            if (!deleted) {
+                System.err.println("Failed to delete the database file");
+                return;
+            }
+        }
+
+        try {
+            BankAccountRepositoryImpl.initializeDataFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+        
+        
     }
 }

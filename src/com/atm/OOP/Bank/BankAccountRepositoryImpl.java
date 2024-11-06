@@ -3,6 +3,8 @@ package com.atm.OOP.Bank;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.atm.Utils.UIAlert;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +14,17 @@ import java.text.ParseException;
 import java.util.*;
 
 public class BankAccountRepositoryImpl implements BankAccountRepository {
-    private static final String DATA_PATH = "data/user.json";
+    private static final String SRC_USER_DATA_PATH = "data/user.json";
+    public static final String LOCAL_USER_DATA_PATH = System.getProperty("user.home") + "/ATMApp/user.json";
+
+    public BankAccountRepositoryImpl()
+    {
+        try {
+            initializeDataFile();
+        } catch (IOException e) {
+            UIAlert.showError("Erreur", "Erreur lors de l'initialisation du fichier de données", true);
+        }
+    }
 
     @Override
     public List<BankAccount> getAllAccounts() throws IOException {
@@ -115,20 +127,13 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
         writeUsersToFile(users);
     }
 
-    // Helper methods
     private JSONArray readUsersFromFile() throws IOException {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream(DATA_PATH)) {
-            if (is == null) {
-                throw new FileNotFoundException("Resource not found: data/user.json");
-            }
-            String content = new String(is.readAllBytes());
-            return new JSONArray(content);
-        }
+        String content = new String(Files.readAllBytes(Paths.get(LOCAL_USER_DATA_PATH)));
+        return new JSONArray(content);
     }
-        
 
     private void writeUsersToFile(JSONArray users) throws IOException {
-        Files.write(Paths.get(DATA_PATH), users.toString(4).getBytes());
+        Files.write(Paths.get(LOCAL_USER_DATA_PATH), users.toString(4).getBytes());
     }
 
     private BankAccount parseBankAccountFromJson(JSONObject userJson) throws Exception {
@@ -185,6 +190,18 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
         userJson.put("transactions", transactionsArray);
     
         return userJson;
+    }
+
+    public static void initializeDataFile() throws IOException {
+        java.nio.file.Path localPath = Paths.get(LOCAL_USER_DATA_PATH);
+    
+        if (!Files.exists(localPath)) {
+            Files.createDirectories(localPath.getParent());
+            try (InputStream is = BankAccountRepositoryImpl.class.getClassLoader().getResourceAsStream(SRC_USER_DATA_PATH)) {
+                if (is == null) throw new FileNotFoundException("Resource not found: " + SRC_USER_DATA_PATH);
+                Files.copy(is, localPath);
+            }
+        }
     }
 
 }
