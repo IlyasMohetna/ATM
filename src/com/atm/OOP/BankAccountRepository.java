@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface BankAccountRepository {
     Optional<BankAccount> findByAccountNumberAndPin(String accountNumber, String pin) throws IOException;
-    boolean isAccountNumberExists(String accountNumber) throws IOException;
+    boolean isAccountNumberExists(String accountNumber);
     void save(BankAccount account) throws IOException;
     List<BankAccount> getAllAccounts() throws IOException;
 }

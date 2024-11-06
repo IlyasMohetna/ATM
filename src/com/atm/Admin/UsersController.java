@@ -48,10 +48,12 @@ public class UsersController extends AdminBaseController {
         accountNumberColumn.setCellValueFactory(new PropertyValueFactory<>("accountNumber"));
         pinColumn.setCellValueFactory(new PropertyValueFactory<>("pin"));
         soldeColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        creationDateColumn.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
 
         creationDateColumn.setCellValueFactory(cellData -> {
             Date date = cellData.getValue().getCreationDate();
-            return new SimpleStringProperty(BankAccount.DATE_FORMAT.format(date));
+            String dateString = BankAccount.DATE_FORMAT.format(date);
+            return new SimpleStringProperty(dateString);
         });
 
         // Load users from AccountManager

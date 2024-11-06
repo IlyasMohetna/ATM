@@ -1,30 +1,31 @@
-[{
+[
+  {
     "account_number": "123456789",
     "firstname": "John",
     "pin": "1111",
-    "balance": 1000.8899999999994,
-    "creation_date": "2024-11-02 21:56:00",
+    "balance": 1101.8899999999994,
+    "creation_date": "11/04/2024 21:56:00",
     "transactions": [
-        {
-            "date": "2024-11-06 05:13:58",
-            "amount": 234,
-            "type": "withdraw"
-        },
-        {
-            "date": "2024-11-02 23:50:09",
-            "amount": 1000,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-02 21:56:00",
-            "amount": 100,
-            "type": "deposit"
-        },
-        {
-            "date": "2024-11-06 05:14:07",
-            "amount": 383,
-            "type": "withdraw"
-        }
+      {
+        "date": "06/11/2024 05:25:49",
+        "amount": 123,
+        "type": "deposit"
+      },
+      {
+        "date": "06/11/2024 05:25:55",
+        "amount": 22,
+        "type": "withdraw"
+      }
     ],
     "lastname": "Doe"
-}]
+  },
+  {
+    "account_number": "584579488",
+    "firstname": "Ilyas",
+    "pin": "5289",
+    "balance": 854,
+    "creation_date": "06/11/2024 05:44:52",
+    "transactions": [],
+    "lastname": "Mohetna"
+  }
+]

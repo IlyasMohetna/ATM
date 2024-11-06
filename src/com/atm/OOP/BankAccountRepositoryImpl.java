@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class BankAccountRepositoryImpl implements BankAccountRepository {
@@ -75,16 +74,21 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
     }
 
     @Override
-    public boolean isAccountNumberExists(String accountNumber) throws IOException {
-        JSONArray users = readUsersFromFile();
+    public boolean isAccountNumberExists(String accountNumber) {
+        try{
+            JSONArray users = readUsersFromFile();
 
-        for (int i = 0; i < users.length(); i++) {
-            JSONObject userJson = users.getJSONObject(i);
-            if (userJson.getString("account_number").equals(accountNumber)) {
-                return true;
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject userJson = users.getJSONObject(i);
+                if (userJson.getString("account_number").equals(accountNumber)) {
+                    return true;
+                }
             }
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -93,7 +97,6 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
         JSONObject accountJson = serializeBankAccountToJson(account);
         boolean accountExists = false;
 
-        // Update existing account
         for (int i = 0; i < users.length(); i++) {
             JSONObject userJson = users.getJSONObject(i);
             if (userJson.getString("account_number").equals(account.getAccountNumber())) {
@@ -103,7 +106,6 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
             }
         }
 
-        // Add new account if it doesn't exist
         if (!accountExists) {
             users.put(accountJson);
         }
@@ -158,8 +160,7 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
         userJson.put("lastname", account.getLastname());
         userJson.put("balance", account.getBalance());
     
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String creationDateString = dateFormat.format(account.getCreationDate());
+        String creationDateString = BankAccount.DATE_FORMAT.format(account.getCreationDate());
         userJson.put("creation_date", creationDateString);
     
         JSONArray transactionsArray = new JSONArray();
@@ -168,7 +169,7 @@ public class BankAccountRepositoryImpl implements BankAccountRepository {
             transactionJson.put("type", transaction.getType());
             transactionJson.put("amount", transaction.getAmount());
     
-            String dateString = dateFormat.format(transaction.getDate());
+            String dateString = BankAccount.DATE_FORMAT.format(transaction.getDate());
             transactionJson.put("date", dateString);
     
             transactionsArray.put(transactionJson);
