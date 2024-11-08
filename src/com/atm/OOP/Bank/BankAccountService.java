@@ -4,86 +4,102 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * Service class for managing bank accounts.
+ * Service class pour la gestion des comptes bancaires.
  */
 public class BankAccountService {
-    private BankAccount bankAccount;
-    private BankAccountRepository repository;
+    private BankAccount bankAccount; // Compte bancaire actuel
+    private BankAccountRepository repository; // Référentiel pour interagir avec les comptes bancaires
 
     /**
-     * Constructor for BankAccountService.
+     * Constructeur pour BankAccountService.
      * 
-     * @param repository the repository to interact with bank accounts
+     * @param repository le référentiel pour interagir avec les comptes bancaires
      */
     public BankAccountService(BankAccountRepository repository) {
         this.repository = repository;
     }
 
     /**
-     * Gets the current bank account.
+     * Obtient le compte bancaire actuel.
      * 
-     * @return the current bank account
+     * @return le compte bancaire actuel
      */
     public BankAccount getBankAccount() {
         return bankAccount;
     }
 
     /**
-     * Authenticates a bank account using account number and PIN.
+     * Authentifie un compte bancaire en utilisant le numéro de compte et le code PIN.
      * 
-     * @param accountNumber the account number
-     * @param pin the PIN code
-     * @throws IOException if an I/O error occurs
+     * @param accountNumber le numéro de compte
+     * @param pin le code PIN
+     * @throws IOException si une erreur d'I/O se produit
      */
     public void authenticate(String accountNumber, String pin) throws IOException {
+        // Recherche le compte bancaire par numéro de compte et code PIN
         bankAccount = repository.findByAccountNumberAndPin(accountNumber, pin)
                 .orElseThrow(() -> new IllegalArgumentException("Numéro de compte ou code PIN incorrect"));
     }
 
     /**
-     * Deposits a specified amount into the bank account.
+     * Dépose un montant spécifié dans le compte bancaire.
      * 
-     * @param amount the amount to deposit
-     * @throws IOException if an I/O error occurs
-     * @throws IllegalArgumentException if the deposit amount is invalid
+     * @param amount le montant à déposer
+     * @throws IOException si une erreur d'I/O se produit
+     * @throws IllegalArgumentException si le montant du dépôt est invalide
      */
     public void deposit(double amount) throws IOException {
+        // Vérifie si le montant est valide
         if (amount <= 0) throw new IllegalArgumentException("Le montant du dépot est invalide");
+        // Met à jour le solde du compte bancaire
         bankAccount.setBalance(bankAccount.getBalance() + amount);
+        // Ajoute une transaction de dépôt
         bankAccount.addTransaction(new Transaction("deposit", amount, new Date()));
+        // Sauvegarde le compte bancaire mis à jour
         repository.save(bankAccount);
     }
 
     /**
-     * Withdraws a specified amount from the bank account.
+     * Retire un montant spécifié du compte bancaire.
      * 
-     * @param amount the amount to withdraw
-     * @throws IOException if an I/O error occurs
-     * @throws IllegalArgumentException if the withdrawal amount is invalid or insufficient funds
+     * @param amount le montant à retirer
+     * @throws IOException si une erreur d'I/O se produit
+     * @throws IllegalArgumentException si le montant du retrait est invalide ou si les fonds sont insuffisants
      */
     public void withdraw(double amount) throws IOException {
+        // Vérifie si le montant est valide
         if (amount <= 0) throw new IllegalArgumentException("Le montant du retrait est invalide");
+        // Vérifie si le solde est suffisant
         if (amount > bankAccount.getBalance()) throw new IllegalArgumentException("Solde insuffisant");
+        // Met à jour le solde du compte bancaire
         bankAccount.setBalance(bankAccount.getBalance() - amount);
+        // Ajoute une transaction de retrait
         bankAccount.addTransaction(new Transaction("withdraw", amount, new Date()));
+        // Sauvegarde le compte bancaire mis à jour
         repository.save(bankAccount);
     }
 
     /**
-     * Changes the PIN of the bank account.
+     * Change le code PIN du compte bancaire.
      * 
-     * @param currentPin the current PIN
-     * @param newPin the new PIN
-     * @param confirmPin the confirmation of the new PIN
-     * @throws IOException if an I/O error occurs
-     * @throws IllegalArgumentException if the new PIN is invalid or does not match the confirmation
+     * @param currentPin le code PIN actuel
+     * @param newPin le nouveau code PIN
+     * @param confirmPin la confirmation du nouveau code PIN
+     * @throws IOException si une erreur d'I/O se produit
+     * @throws IllegalArgumentException si le nouveau code PIN est invalide ou ne correspond pas à la confirmation
      */
     public void changePin(String currentPin, String newPin, String confirmPin) throws IOException {
+        // Vérifie si le nouveau code PIN contient 4 chiffres
         if (newPin.length() != 4) throw new IllegalArgumentException("Le nouveau code PIN doit contenir 4 chiffres.");
+        // Vérifie si le nouveau code PIN est différent de l'ancien
         if (currentPin.equals(newPin)) throw new IllegalArgumentException("Le nouveau code PIN doit être différent de l'ancien.");
+        // Vérifie si le code PIN actuel est correct
         if (!bankAccount.getPin().equals(currentPin)) throw new IllegalArgumentException("Le code PIN actuel est incorrect.");
+        // Vérifie si les nouveaux codes PIN correspondent
         if (!newPin.equals(confirmPin)) throw new IllegalArgumentException("Les nouveaux codes PIN ne correspondent pas.");
+        // Met à jour le code PIN du compte bancaire
         bankAccount.setPin(newPin);
+        // Sauvegarde le compte bancaire mis à jour
         repository.save(bankAccount);
     }
 }
