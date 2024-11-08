@@ -32,7 +32,7 @@
       <AnchorPane prefHeight="700.0" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="accountNumberField" focusTraversable="false" layoutX="75.0" layoutY="225.0" prefHeight="50.0" prefWidth="399.0" promptText="Numéro de compte" style="-fx-border-radius: 15px;" text="123456789" />
-            <PasswordField fx:id="pinField" focusTraversable="false" layoutX="76.0" layoutY="319.0" prefHeight="50.0" prefWidth="397.0" promptText="PIN" />
+            <PasswordField fx:id="pinField" focusTraversable="false" layoutX="76.0" layoutY="319.0" prefHeight="50.0" prefWidth="397.0" promptText="PIN" text="1111" />
             <Text layoutX="46.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accédez à votre espace bancaire" textAlignment="CENTER" wrappingWidth="471.20340728759766">
                <font>
                   <Font name="System Bold" size="23.0" />
