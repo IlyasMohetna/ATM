@@ -1,7 +1,7 @@
 {
   "java.project.sourcePaths": ["src"],
   "java.project.outputPath": "bin",
-  "java.jdt.ls.vmargs": "--module-path \"C:/javafx-sdk-23.0.1/lib\" --add-modules javafx.controls,javafx.fxml",
+  "java.jdt.ls.vmargs": "--module-path \"C:/javafx-sdk-23.0.1/lib\" --add-modules javafx.controls,javafx.fxml,javafx.application",
   "java.project.referencedLibraries": [
     "c:\\Users\\Ilyas Mohetna\\Downloads\\json-20240303.jar",
     "c:\\javafx-sdk-23.0.1\\lib\\javafx.fxml.jar",
